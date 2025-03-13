@@ -7,7 +7,7 @@ const App = () => {
   const [chats, setChats] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const token = process.env.REACT_APP_OPENAI_API_KEY;
-
+  
   useEffect(() => {
     const fetchChats = async () => {
       try {

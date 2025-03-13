@@ -23,24 +23,22 @@ const Sidebar = ({ chats = [], currentChat, setCurrentChat, onNewChat, setChats 
     } catch (error) {  
       console.error("Error deleting chat:", error);  
     }  
-  };  
-
-  const handleInputChange = (chatId, value) => {  
-    setNewTitles((prev) => ({ ...prev, [chatId]: value }));  
-  };  
+  };
 
   return (  
-    <div className="w-1/4 bg-green-700 text-white p-4 flex flex-col">  
-      <button className="p-2 bg-green-600 rounded-lg mb-4" onClick={onNewChat}>+ New Chat</button>  
+    <div className="w-1/4 bg-gray-800 text-white p-4 flex flex-col shadow-lg shadow-gray-700/50 ">  
+      <button className="p-2 bg-gray-700 rounded-lg mb-4 shadow-md" onClick={onNewChat}>
+        + New Chat
+      </button>  
       <ul>  
         {chats.length > 0 ? (  
           chats.map((chat) => (  
-            <li key={chat.id} className="flex justify-between items-center p-2 bg-green-600 rounded-lg mb-2">  
+            <li key={chat.id} className="flex justify-between items-center p-2 bg-gray-700 rounded-lg mb-2 shadow-md">  
               {editChatId === chat.id ? (  
                 <input  
-                  className="text-black flex-grow"  
+                  className="text-black flex-grow bg-gray-600 text-white p-1 rounded"
                   value={newTitles[chat.id] || chat.title}  
-                  onChange={(e) => handleInputChange(chat.id, e.target.value)}  
+                  onChange={(e) => setNewTitles({ ...newTitles, [chat.id]: e.target.value })}  
                   onBlur={() => handleRename(chat.id)}  
                   autoFocus  
                 />  
@@ -54,7 +52,7 @@ const Sidebar = ({ chats = [], currentChat, setCurrentChat, onNewChat, setChats 
             </li>  
           ))  
         ) : (  
-          <p className="text-gray-300">No chats available</p>  
+          <p className="text-gray-400">No chats available</p>  
         )}  
       </ul>  
     </div>  

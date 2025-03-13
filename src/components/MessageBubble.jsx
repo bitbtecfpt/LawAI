@@ -45,13 +45,13 @@ const MessageBubble = ({ text, sender = "bot", timestamp }) => {
       <div
         className={`p-3 rounded-xl w-fit max-w-[80%] md:max-w-[60%] text-white relative shadow-md break-words ${
           sender === "user"
-            ? "bg-green-500 text-white self-end"
+            ? "bg-gray-500 text-white self-end"
             : "bg-gray-700 text-white self-start"
         }`}
       >
         {lines.length > 1 ? <ul className="list-disc pl-5">{renderList(lines)}</ul> : <p>{text}</p>}
       </div>
-      <span className="text-xs text-black mt-1">
+      <span className="text-xs text-gray-400 mt-1">
         {new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
       </span>
     </div>
